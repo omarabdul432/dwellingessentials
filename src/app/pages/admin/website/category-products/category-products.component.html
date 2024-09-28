@@ -1,1 +1,25 @@
-<p>category-products works!</p>
+<div class="container">
+    <div class="d-flex gap-3 ">
+        <a *ngFor="let category of category" (click)="getProductByCategory(category)" >
+            {{category}}
+        </a>
+    </div>
+
+    <div class="row">
+        @if (!selectedCategory) {
+            <div class="col-4" *ngFor="let product of products">
+                <div class="ratio ratio-4x3">
+                    <img [src]="product.imageUrl" alt="">
+                </div>
+            </div>
+        }
+        @if(selectedCategory){
+            <div class="col-4" *ngFor="let product of filteredArray">
+                <div class="ratio ratio-4x3">
+                    <img [src]="product.imageUrl" alt="">
+                </div>
+            </div>
+        }
+     
+    </div>
+</div>

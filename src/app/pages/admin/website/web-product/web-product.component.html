@@ -1,0 +1,55 @@
+<div class="container mt-4">
+    <div class="ratio ratio-21x9">
+        <img src="https://graphicsfamily.com/wp-content/uploads/edd/2021/10/iPhone-Website-Ad-Banner-Design-1180x664.jpg" alt="" class="rounded-5">
+    </div>
+</div>
+
+<div class="container bg-light mt-4">
+   <div class="">
+    <h3 class="text-center">My Smart Basket</h3>
+   </div>
+    <div class="row justify-content-center">
+        <div class="col-3" *ngFor="let product of productList">
+            <div class="card border-0 mt-4">
+                <div class="ratio ratio-4x3 border rounded-5 p-3">
+                    <img [src]="product.imageUrl" alt="" class="img-card-top p-4"> 
+                </div>
+                <div class="card-body">
+                    <p class="text-muted ">fresho!</p>
+                    <p class="card-title ">{{product.productName}}</p>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-dark dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" >-- Select --</button>
+                        <ul class="dropdown-menu w-100 p-2" data-bs-toggle="modal" data-bs-target="#modalcontent">
+                            <li>
+                                <a class="dropdown-item p-0" >
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div>
+                                                <p class="mb-0 fs-5">250g</p>
+                                                <span class="badge text-success p-0 fs-6">24% OFF</span><span class="ms-3">$13.54</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                       
+                    <p>$ {{product.productPrice}}</p>
+
+
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="btn btn-outline-dark w-100"><i class="bi bi-bookmark"></i></button>
+                        </div>
+
+                        <div class="col-8">
+                            <button class="btn btn-outline-danger w-100" (click)="add(product.productId)">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

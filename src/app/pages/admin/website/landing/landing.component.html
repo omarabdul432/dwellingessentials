@@ -1,1 +1,30 @@
-<p>landing works!</p>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand">DwellingEssentials</a>
+        <a class="nav-link ms-auto">{{userName}}</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarcontent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarcontent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link">Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/category">categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Cart</a>
+                </li>
+            </ul>
+            <button class="btn btn-primary btn-sm ms-3" routerLink="/signin" *ngIf="!userName">Login</button>
+
+            <button class="btn btn-primary btn-sm ms-3" routerLink="/signin" (click)="logout()" *ngIf="userName">Logout</button>
+
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -16,12 +16,12 @@ export class ProductsComponent implements OnInit {
 
   issidePanel: boolean = false
   products: Product = {
-    id: (Math.random() * 10).toString(),
     productName: '',
     productPrice: '',
     productDescription: '',
     imageUrl: '',
-    createdAt: new Date()
+    createdAt: new Date(),
+    category: ''
   }
 
   productsList: any[] = []
@@ -42,8 +42,16 @@ export class ProductsComponent implements OnInit {
 
   submit() {
     this.productSer.addProduct(this.products).then(() => {
-      this.products.id = (Math.random() * 10).toString();
+      console.log(this.products)
       console.log("product added successfully")
+      this.products = {
+        productName: '',
+        productPrice: '',
+        productDescription: '',
+        imageUrl: '',
+        createdAt: new Date(),
+        category: ''
+      }
     }).catch((error) => {
       console.log(error)
     })
@@ -58,6 +66,23 @@ export class ProductsComponent implements OnInit {
   onEdit(item: any) {
     this.products = item
     this.issidePanel = true
+  }
+
+  onDelete(item: any) {
+    // if (this.products) {
+    this.productSer.deleteProduct(item).then(() => {
+      console.log("Product Deleted");
+      console.log(item)
+    })
+    // }
+  }
+
+  update() {
+    if (this.products) {
+      this.productSer.updateProduct(this.products).then(() => {
+
+      })
+    }
   }
 }
 

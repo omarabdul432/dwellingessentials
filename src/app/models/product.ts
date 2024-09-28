@@ -1,8 +1,15 @@
 export interface Product {
-    id?: string,
+    productId?: string
     productName: string,
     productPrice: string,
     productDescription: string,
     imageUrl: string
-    createdAt: Date
+    createdAt?: Date
+    category: string
 }
+
+// export interface User {
+//     username: string,
+//     email: string,
+//     password: string
+// }

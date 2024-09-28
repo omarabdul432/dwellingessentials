@@ -15,18 +15,18 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-4" *ngFor="let productList of productsList">
+                        <div class="col-4" *ngFor="let product of productsList">
                             <div class="card">
                                 <div class="ratio ratio-4x3">
-                                    <img [src]="productList.imageUrl" class="img-card-top">
+                                    <img [src]="product.imageUrl" class="img-card-top">
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-title">{{productList.productName}}</p>
-                                    <h2 class="">{{productList.productPrice}}</h2>
-                                    <p class="text-small">{{productList.productDescription}}</p>
+                                    <p class="card-title">{{product.productName}}</p>
+                                    <h2 class="">{{product.productPrice}}</h2>
+                                    <p class="text-small">{{product.productDescription}}</p>
 
-                                    <button class="btn btn-success" (click)="onEdit(productList)">Edit</button>
-                                    <button class="btn btn-danger ms-4">Delete</button>
+                                    <button class="btn btn-success" (click)="onEdit(product)">Edit</button>
+                                    <button class="btn btn-danger ms-4" (click)="onDelete(product)">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form (ngSubmit)="submit()" #productForm="ngForm">
+                    <form  #productForm="ngForm">
                         <div>
                             <label for="productname">Product Name</label>
                             <input type="text" name="productname" class="form-control"
@@ -61,6 +61,13 @@
                         </div>
 
                         <div>
+                            <label for="productprice">Category</label>
+                            <input type="text" name="category" class="form-control"
+                                [(ngModel)]="products.category">
+                        </div>
+
+
+                        <div>
                             <label for="image">imageUrl</label>
                             <input type="text" name="imageUrl" class="form-control" [(ngModel)]="products.imageUrl">
                         </div>
@@ -72,8 +79,8 @@
                         </div>
 
                         <div class="mt-3">
-                            <button class="btn btn-secondary" *ngIf="products.id == '0'">Add Product</button>
-                            <button class="btn btn-secondary" *ngIf="products.id !== '0'">Update Product</button>
+                            <button class="btn btn-secondary"  (click)="submit()">Add Product</button>
+                            <button class="btn btn-secondary" (click)="update()">Update Product</button>
 
                         </div>
                     </form>
